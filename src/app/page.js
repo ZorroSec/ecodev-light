@@ -15,9 +15,25 @@ export default function Home(){
                     </li>
                 </ul>
             </header>
-            <form className="container">
+            <form className="container mt-3">
                 <div className="mb-3">
-                    <label htmlFor="senha" className="form-label">Password</label>
+                    <h2>Login</h2>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Email</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        id="email"
+                        aria-describedby="emailHelpId"
+                        placeholder="abc@mail.com"
+                    />
+                    <small id="emailHelpId" className="form-text text-muted">Nao iremos compartilhar seu email com mais, ninguém.</small>
+                </div>
+                
+                <div className="mb-3">
+                    <label htmlFor="senha" className="form-label">Senha</label>
                     <input
                         type="password"
                         className="form-control"
@@ -25,6 +41,9 @@ export default function Home(){
                         id="senha"
                         placeholder="Sua Senha"
                     />
+                </div>
+                <div className="mb-3">
+                    <button className="btn btn-success">Entrar</button>
                 </div>
                 
             </form>
