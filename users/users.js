@@ -1,27 +1,27 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "../sequelize/sequelize.js";
+import sequelize from "sequelize";
+import connectionDbSequelize from "../sequelize/sequelize";
 
-export const Users = sequelize.define('users', {
+export const Users = connectionDbSequelize.define('users', {
     id: {
-        type: DataTypes.INTEGER,
+        type: sequelize.DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
     nome: {
-        type: DataTypes.STRING,
+        type: sequelize.DataTypes.STRING,
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
+        type: sequelize.DataTypes.STRING,
         allowNull: false
     },
     senha: {
-        type: DataTypes.STRING,
+        type: sequelize.DataTypes.STRING,
         allowNull: false
     },
     ip: {
-        type: DataTypes.STRING,
+        type: sequelize.DataTypes.STRING,
         allowNull: false
     }
 })

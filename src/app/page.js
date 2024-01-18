@@ -1,70 +1,21 @@
-'use client'
+import { createConnection } from "mysql2"
+import connection from "../../db/database"
+import createNewUser from "../../createNewUser/newUser"
+// import sequelize from 'sequelize'
+// import connectionDbSequelize from "../../sequelize/sequelize"
+// import Users from "../../users/users"
 
-import "bootstrap/dist/css/bootstrap.css"
-import { useState } from "react"
+ //initial route
 export default function Home(){
-    const [ email, setEmail ] = useState('')
-    const [ senha, setSenha ] = useState('')
-    const handleClick = (inputEmail, inputPassword)=>{
-        setEmail(inputEmail.target.value)
-        setSenha(inputPassword.target.value)
-    }
-    return (
-        <div>
-            <header className="py--3 d-flex justify-content-center text-bg-dark">
-                <ul className="nav nav-pills">
-                    <li className="nav-item">
-                        <a href="/" className="nav-link text-white">Inicio</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/api/v1" className="nav-link text-white">Api</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/terms" className="nav-link text-white">Termos de uso</a>
-                    </li>
-                </ul>
-            </header>
-            <form className="container mt-3">
-                <div className="mb-3">
-                    <h2>Login</h2>
-                </div>
-                <div className="container mb-3 p-4">
-                    <p>
-                        Email: {email}
-                        <br/>
-                        Senha: {senha}
-                    </p>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        name="email"
-                        id="email"
-                        aria-describedby="emailHelpId"
-                        placeholder="abc@mail.com"
-                        onChange={(e)=> setEmail(e.target.value)}
-                    />
-                    <small id="emailHelpId" className="form-text text-muted">Nao iremos compartilhar seu email com mais, ninguém.</small>
-                </div>
-                
-                <div className="mb-3">
-                    <label htmlFor="senha" className="form-label">Senha</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        name="senha"
-                        id="senha"
-                        placeholder="Sua Senha"
-                        onChange={(e)=> setSenha(e.target.value)}
-                    />
-                </div>
-                <div className="mb-3">
-                    <button className="btn btn-success" onClick={handleClick}>Entrar</button>
-                </div>
-                
-            </form>
-        </div>
-    )
+    fetch("https://api.ipify.org/?format=json").then((res)=>{
+        res.json().then((data)=>{
+            createNewUser('josecipriano', 'joseiraildesciprianoribeiro@gmail.com', 'zorro_ff', data['ip'], (results, fields)=>{
+                console.log({ message: 'success' })
+            })
+            console.log(data)
+        })
+    })
+    // const query = await connection.query(`SELECT * FROM users WHERE ip = '${fetchIpJson['ip']}'`)
+    // console.log(query)
 }
+

@@ -1,6 +1,6 @@
-import { Sequelize } from "sequelize";
+import sequelize from "sequelize"
 
-export const sequelize = new Sequelize('railway', 'railway', 'Cv7U_a1OXPLh5N-ZryrA92FVpwXIQ4pJ', {
+export const connectionDbSequelize = new sequelize.Sequelize('railway', 'railway', 'Cv7U_a1OXPLh5N-ZryrA92FVpwXIQ4pJ', {
     dialect: 'mysql',
     host: 'roundhouse.proxy.rlwy.net'
 })
