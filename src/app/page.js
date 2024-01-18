@@ -1,5 +1,14 @@
+'use client'
+
 import "bootstrap/dist/css/bootstrap.css"
+import { useState } from "react"
 export default function Home(){
+    const [ email, setEmail ] = useState('')
+    const [ senha, setSenha ] = useState('')
+    const handleClick = (inputEmail, inputPassword)=>{
+        setEmail(inputEmail.target.value)
+        setSenha(inputPassword.target.value)
+    }
     return (
         <div>
             <header className="py--3 d-flex justify-content-center text-bg-dark">
@@ -19,6 +28,13 @@ export default function Home(){
                 <div className="mb-3">
                     <h2>Login</h2>
                 </div>
+                <div className="container mb-3 p-4">
+                    <p>
+                        Email: {email}
+                        <br/>
+                        Senha: {senha}
+                    </p>
+                </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input
@@ -28,6 +44,7 @@ export default function Home(){
                         id="email"
                         aria-describedby="emailHelpId"
                         placeholder="abc@mail.com"
+                        onChange={(e)=> setEmail(e.target.value)}
                     />
                     <small id="emailHelpId" className="form-text text-muted">Nao iremos compartilhar seu email com mais, ninguém.</small>
                 </div>
@@ -40,10 +57,11 @@ export default function Home(){
                         name="senha"
                         id="senha"
                         placeholder="Sua Senha"
+                        onChange={(e)=> setSenha(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
-                    <button className="btn btn-success">Entrar</button>
+                    <button className="btn btn-success" onClick={handleClick}>Entrar</button>
                 </div>
                 
             </form>
