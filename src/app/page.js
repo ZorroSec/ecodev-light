@@ -9,20 +9,25 @@ import "../../css/App.css"
 // import Users from "../../users/users"
 
  //initial route
-export default function Home(){
-    fetch("https://api.ipify.org/?format=json").then((res)=>{
-        res.json().then((data)=>{
-            connection.query(`SELECT * FROM users WHERE ip = '${data['ip']}'`, (results, fields)=>{
-                if(fields.find((user)=> user.ip === data['ip'])){
-                    return
-                }else{
-                    redirect('/login')
-                }
-                // console.log(fields)
-            })
-            console.log(data)
-        })
-    })
+export default async function Home(){
+    // fetch("https://api.ipify.org/?format=json").then((res)=>{
+    //     res.json().then((data)=>{
+    //         connection.query(`SELECT * FROM users WHERE ip = '${data['ip']}'`, (results, fields)=>{
+    //             if(fields.find((user)=> user.ip === data['ip'])){
+    //                 return
+    //             }else{
+    //                 redirect('/login')
+    //             }
+    //             // console.log(fields)
+    //         })
+    //         console.log(data)
+    //     })
+    // })
+    const fetchIp = await fetch("https://api.ipify.org/?format=json")
+    const fetchIpJson = await fetchIp.json()
+    console.log(fetchIpJson)
+    const [ results, fields ]= await connection.query(`SELECT * FROM users WHERE ip = '${fetchIpJson['ip']}'`)
+    console.log(results)
     return (
         <>
             <header className="p-3 mb-3 border-bottom">
@@ -70,6 +75,9 @@ export default function Home(){
                     </div>
                 </div>
             </header>
+            <div className="container">
+                
+            </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         </>
         
