@@ -14,7 +14,23 @@ export default function Home(){
         </ul>
         <hr className="b-example-divider text-white" />
       </header>
-      
+      <form action="/" className="container mt-10 mb-3 p-3">
+        <div className="mb-3">
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" id="email" className="form-control" placeholder="Seu email" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="senha" className="form-label">Senha</label>
+          <input
+            type="password"
+            className="form-control"
+            name="senha"
+            id="senha"
+            placeholder="Sua senha"
+          />
+        </div>
+        
+      </form>
     </div>
     
   )
