@@ -1,3 +1,5 @@
+import Head from "next/head"
+import Script from "next/script"
 import "bootstrap/dist/css/bootstrap.css"
 import mysql from "mysql2"
 import createNewUser from "../../createNewUser/newUser"
@@ -81,7 +83,7 @@ export default async function Home(){
                     </div>
                 </header>
                 <div className="container">
-                    {post.map(data=>(
+                    {post.map((data, i)=>(
                         <>
                             <p>
                                 {data.id}
@@ -89,7 +91,7 @@ export default async function Home(){
                         </>
                     ))}
                 </div>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous"></script>
+                <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous" />
             </>
         )
     }else{
